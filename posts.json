@@ -10,5 +10,11 @@
     "title": "Post Two",
     "description": "Description for Post Two.",
     "image": "images/img2_small.jpg"
+  },
+  {
+    "filename": "page3.html",
+    "title": "Post Three",
+    "description": "Description for Post Three.",
+    "image": "images/img3_small.jpg"
   }
 ]
