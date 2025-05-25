@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Page One</title>
-  <meta name="description" content="This is the first example page.">
+  <meta charset="UTF-8" />
+  <title>Post Page</title>
+  <style>
+    body { max-width: 900px; margin: auto; font-family: sans-serif; padding: 20px; }
+    img.top-image { width: 100%; border-radius: 12px; margin-bottom: 20px; }
+  </style>
 </head>
 <body>
-  <p>Welcome to Page One. This page serves as an example for metadata parsing.</p>
+
+  <div id="top-image-container"></div>
+
+  <article>
+    <h1>Post Title Here</h1>
+    <p>Your post content goes here.</p>
+  </article>
+
+  <script>
+    // get current page filename
+    const currentPage = location.pathname.split('/').pop();
+
+    fetch('posts.json')
+      .then(res => res.json())
+      .then(posts => {
+        const post = posts.find(p => p.filename === currentPage);
+        if (post) {
+          const container = document.getElementById('top-image-container');
+          const img = document.createElement('img');
+          img.src = post.image;
+          img.alt = post.title;
+          img.className = 'top-image';
+          container.appendChild(img);
+
+          // Optionally update title and description dynamically
+          document.title = post.title;
+          document.querySelector('article h1').textContent = post.title;
+        }
+      })
+      .catch(err => console.error('Error loading posts.json:', err));
+  </script>
+
 </body>
 </html>
