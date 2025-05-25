@@ -4,25 +4,43 @@
   <meta charset="UTF-8" />
   <title>Posts Index</title>
   <style>
-    body { max-width: 900px; margin: auto; font-family: sans-serif; padding: 20px; }
-    .post-item { display: flex; gap: 20px; margin-bottom: 25px; align-items: center; }
-    .post-item img { width: 150px; border-radius: 8px; }
-    .post-info h2 { margin: 0; }
+    body {
+      max-width: 900px;
+      margin: auto;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .post-item {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 25px;
+      align-items: center;
+    }
+    .post-item img {
+      width: 150px;
+      border-radius: 8px;
+    }
+    .post-info h2 {
+      margin: 0;
+    }
   </style>
 </head>
 <body>
 
   <h1>All Posts</h1>
-  <div id="posts-container"></div>
+  <div id="posts-container">Loading posts...</div>
 
   <script>
     fetch('posts.json')
-      .then(res => res.json())
+      .then(response => response.json())
       .then(posts => {
         const container = document.getElementById('posts-container');
+        container.innerHTML = ''; // clear loading text
+
         posts.forEach(post => {
           const div = document.createElement('div');
           div.className = 'post-item';
+
           div.innerHTML = `
             <img src="${post.image}" alt="${post.title}" />
             <div class="post-info">
@@ -30,10 +48,15 @@
               <p>${post.description}</p>
             </div>
           `;
+
           container.appendChild(div);
         });
       })
-      .catch(err => console.error('Error loading posts.json:', err));
+      .catch(err => {
+        const container = document.getElementById('posts-container');
+        container.textContent = 'Failed to load posts.';
+        console.error('Error loading posts.json:', err);
+      });
   </script>
 
 </body>

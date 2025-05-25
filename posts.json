@@ -2,20 +2,13 @@
   {
     "filename": "page1.html",
     "title": "First Post",
-    "description": "This is the first post description.",
+    "description": "This is the description for the first post.",
     "image": "images/img1_small.jpg"
   },
   {
     "filename": "page2.html",
     "title": "Second Post",
-    "description": "Description of second post.",
+    "description": "Description for the second post goes here.",
     "image": "images/img2_small.jpg"
-  },
-  {
-    "filename": "page3.html",
-    "title": "Third Post",
-    "description": "Another interesting post.",
-    "image": "images/img3_small.jpg"
   }
-  // add all your pages here
 ]

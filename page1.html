@@ -2,43 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Post Page</title>
+  <title>Loading...</title>
   <style>
-    body { max-width: 900px; margin: auto; font-family: sans-serif; padding: 20px; }
-    img.top-image { width: 100%; border-radius: 12px; margin-bottom: 20px; }
+    body {
+      max-width: 900px;
+      margin: auto;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    img.top-image {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
 
-  <div id="top-image-container"></div>
+  <div id="top-image-container">Loading image...</div>
 
   <article>
-    <h1>Post Title Here</h1>
-    <p>Your post content goes here.</p>
+    <h1 id="post-title">Loading title...</h1>
+    <p id="post-description">Loading description...</p>
+    <p>Your full post content goes here.</p>
   </article>
 
   <script>
-    // get current page filename
+    // Get current page filename (e.g. "page1.html")
     const currentPage = location.pathname.split('/').pop();
 
     fetch('posts.json')
       .then(res => res.json())
       .then(posts => {
         const post = posts.find(p => p.filename === currentPage);
-        if (post) {
-          const container = document.getElementById('top-image-container');
-          const img = document.createElement('img');
-          img.src = post.image;
-          img.alt = post.title;
-          img.className = 'top-image';
-          container.appendChild(img);
-
-          // Optionally update title and description dynamically
-          document.title = post.title;
-          document.querySelector('article h1').textContent = post.title;
+        if (!post) {
+          document.getElementById('top-image-container').textContent = 'Post not found.';
+          document.getElementById('post-title').textContent = '';
+          document.getElementById('post-description').textContent = '';
+          return;
         }
+
+        // Set page title
+        document.title = post.title;
+
+        // Show image
+        const container = document.getElementById('top-image-container');
+        container.textContent = ''; // clear loading text
+        const img = document.createElement('img');
+        img.src = post.image;
+        img.alt = post.title;
+        img.className = 'top-image';
+        container.appendChild(img);
+
+        // Update title & description
+        document.getElementById('post-title').textContent = post.title;
+        document.getElementById('post-description').textContent = post.description;
       })
-      .catch(err => console.error('Error loading posts.json:', err));
+      .catch(err => {
+        document.getElementById('top-image-container').textContent = 'Failed to load post data.';
+        console.error(err);
+      });
   </script>
 
 </body>
