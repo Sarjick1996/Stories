@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Posts Index</title>
+  <meta charset="UTF-8">
+  <title>Posts Index</title>
 </head>
 <body>
   <h1>Posts</h1>
@@ -10,26 +10,23 @@
 
   <script>
     fetch('posts.json')
-      .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-      })
+      .then(res => res.json())
       .then(posts => {
         const container = document.getElementById('posts');
         container.innerHTML = '';
         posts.forEach(post => {
-          const div = document.createElement('div');
-          div.innerHTML = `
-            <img src="${post.image}" alt="${post.title}" width="100" />
-            <h2><a href="${post.filename}">${post.title}</a></h2>
-            <p>${post.description}</p>
+          container.innerHTML += `
+            <div>
+              <img src="${post.image}" width="150" alt="${post.title}" />
+              <h2><a href="${post.filename}">${post.title}</a></h2>
+              <p>${post.description}</p>
+            </div>
           `;
-          container.appendChild(div);
         });
       })
-      .catch(error => {
-        document.getElementById('posts').textContent = 'Failed to load posts: ' + error.message;
-        console.error('Fetch error:', error);
+      .catch(err => {
+        document.getElementById('posts').textContent = 'Failed to load posts: ' + err.message;
+        console.error(err);
       });
   </script>
 </body>
