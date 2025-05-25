@@ -1,14 +1,14 @@
 [
   {
     "filename": "page1.html",
-    "title": "First Post",
-    "description": "This is the description for the first post.",
+    "title": "Post One",
+    "description": "Description for Post One.",
     "image": "images/img1_small.jpg"
   },
   {
     "filename": "page2.html",
-    "title": "Second Post",
-    "description": "Description for the second post goes here.",
+    "title": "Post Two",
+    "description": "Description for Post Two.",
     "image": "images/img2_small.jpg"
   }
 ]
