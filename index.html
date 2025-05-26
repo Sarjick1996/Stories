@@ -15,11 +15,17 @@
       margin-bottom: 20px;
     }
 
-    .posts-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+  .posts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 700px) {
+  .posts-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
     .post-link {
       text-decoration: none;
