@@ -1,18 +1,18 @@
 [
   {
-    "filename": "../posts/page1.html",
+    "filename": "//posts/page1.html",
     "title": "Post One",
     "description": "Description for Post One.",
     "image": "../images/img1.jpg"
   },
   {
-    "filename": "../posts/page2.html",
+    "filename": "//posts/page2.html",
     "title": "Post Two",
     "description": "Description for Post Two.",
     "image": "../images/img2.jpg"
   },
   {
-    "filename": "../posts/page3.html",
+    "filename": "//posts/page3.html",
     "title": "Post Three",
     "description": "Description for Post Three.",
     "image": "../images/img2.jpg"
