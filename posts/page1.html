@@ -136,7 +136,7 @@
     // Load post data
     const currentPage = location.pathname.split('/').pop();
 
-    fetch('storyblog/posts.json')
+    fetch('../posts.json')
       .then(res => res.json())
       .then(posts => {
         const post = posts.find(p => p.filename === currentPage);
