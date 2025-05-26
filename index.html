@@ -6,9 +6,19 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
       padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
 
     .post-link {
@@ -18,13 +28,11 @@
 
     .post {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
       border: 1px solid #ddd;
       border-radius: 8px;
       padding: 15px;
-      margin-bottom: 15px;
       transition: background-color 0.2s, box-shadow 0.2s;
+      height: 100%;
     }
 
     .post:hover {
@@ -44,10 +52,6 @@
       border-radius: 6px;
     }
 
-    h1 {
-      margin-bottom: 20px;
-    }
-
     h2 {
       margin: 0 0 8px;
     }
@@ -55,31 +59,85 @@
     p {
       margin: 0;
     }
+
+    .pagination {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .pagination button {
+      padding: 8px 12px;
+      margin: 0 4px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .pagination button.active {
+      font-weight: bold;
+      background-color: #eee;
+    }
   </style>
 </head>
 <body>
   <h1>Posts</h1>
-  <div id="posts">Loading posts...</div>
+  <div id="posts" class="posts-grid">Loading posts...</div>
+  <div class="pagination" id="pagination"></div>
 
   <script>
+    const POSTS_PER_PAGE = 20;
+    let currentPage = 1;
+    let allPosts = [];
+
+    function renderPosts(posts, page) {
+      const container = document.getElementById('posts');
+      container.innerHTML = '';
+
+      const start = (page - 1) * POSTS_PER_PAGE;
+      const end = start + POSTS_PER_PAGE;
+      const pagePosts = posts.slice(start, end);
+
+      pagePosts.forEach(post => {
+        const postHTML = `
+          <a href="${post.filename}" class="post-link">
+            <div class="post">
+              <div class="post-content">
+                <h2>${post.title}</h2>
+                <p>${post.description}</p>
+              </div>
+              <img src="${post.image}" alt="${post.title}" />
+            </div>
+          </a>
+        `;
+        container.innerHTML += postHTML;
+      });
+    }
+
+    function renderPagination(totalPosts) {
+      const pagination = document.getElementById('pagination');
+      pagination.innerHTML = '';
+      const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.className = (i === currentPage) ? 'active' : '';
+        btn.addEventListener('click', () => {
+          currentPage = i;
+          renderPosts(allPosts, currentPage);
+          renderPagination(allPosts.length);
+        });
+        pagination.appendChild(btn);
+      }
+    }
+
     fetch('posts.json')
       .then(res => res.json())
       .then(posts => {
-        const container = document.getElementById('posts');
-        container.innerHTML = '';
-        posts.forEach(post => {
-          container.innerHTML += `
-            <a href="${post.filename}" class="post-link">
-              <div class="post">
-                <div class="post-content">
-                  <h2>${post.title}</h2>
-                  <p>${post.description}</p>
-                </div>
-                <img src="${post.image}" alt="${post.title}" />
-              </div>
-            </a>
-          `;
-        });
+        allPosts = posts;
+        renderPosts(posts, currentPage);
+        renderPagination(posts.length);
       })
       .catch(err => {
         document.getElementById('posts').textContent = 'Failed to load posts: ' + err.message;
