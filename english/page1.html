@@ -26,7 +26,7 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .theme-label {
@@ -76,6 +76,26 @@
       transform: translateX(26px);
     }
 
+    .language-buttons {
+      display: flex;
+      gap: 8px;
+      margin: 10px 0 20px;
+    }
+
+    .lang-btn {
+      font-size: 12px;
+      padding: 4px 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    body.dark-mode .lang-btn {
+      background-color: #333;
+      color: white;
+    }
+
     img.top-image {
       width: 100%;
       border-radius: 12px;
@@ -91,6 +111,13 @@
       <input type="checkbox" id="themeToggle" />
       <span class="slider"></span>
     </label>
+  </div>
+
+  <!-- Language Buttons -->
+  <div class="language-buttons">
+    <button onclick="location.href='../hindi/page1.html'" class="lang-btn">Hindi</button>
+    <button onclick="location.href='page1.html'" class="lang-btn">English</button>
+    <button onclick="location.href='../bengali/page1.html'" class="lang-btn">Bengali</button>
   </div>
 
   <div id="top-image-container">Loading image...</div>
