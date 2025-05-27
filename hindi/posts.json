@@ -1,0 +1,20 @@
+[
+  {
+    "filename": "page1.html",
+    "title": "Post One",
+    "description": "Description for Post One.",
+    "image": "images/img1.jpg"
+  },
+  {
+    "filename": "page2.html",
+    "title": "Post Two",
+    "description": "Description for Post Two.",
+    "image": "images/img2.jpg"
+  },
+  {
+    "filename": "page3.html",
+    "title": "Post Three",
+    "description": "Description for Post Three.",
+    "image": "images/img2.jpg"
+  }
+]
