@@ -101,6 +101,20 @@
       border-radius: 12px;
       margin-bottom: 20px;
     }
+
+.centered-image {
+  text-align: center;
+  margin: 16px 0;
+}
+
+.centered-image img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid #ccc;
+}
   </style>
 </head>
 <body>
@@ -120,13 +134,13 @@
     <button onclick="location.href='../bengali/page1.html'" class="lang-btn">Bengali</button>
   </div>
 
-  <div id="top-image-container">Loading image...</div>
+<article>
+  <h1 id="post-title">Loading title...</h1>
+  <div id="top-image-container" class="centered-image">Loading image...</div>
+  <p id="post-description">Loading description...</p>
+  <p>Your full post content goes here.</p>
+</article>
 
-  <article>
-    <h1 id="post-title">Loading title...</h1>
-    <p id="post-description">Loading description...</p>
-    <p>Your full post content goes here.</p>
-  </article>
 
   <script>
     // Load and apply theme from localStorage
