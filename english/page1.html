@@ -102,19 +102,20 @@
       margin-bottom: 20px;
     }
 
-.centered-image {
-  text-align: center;
-  margin: 16px 0;
+.featured-image-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }
 
-.centered-image img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  border: 2px solid #ccc;
+.featured-image-container img {
+  max-width: 80%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
 }
+
   </style>
 </head>
 <body>
@@ -136,7 +137,7 @@
 
 <article>
   <h1 id="post-title">Loading title...</h1>
-  <div id="top-image-container" class="centered-image">Loading image...</div>
+<div id="top-image-container" class="featured-image-container">Loading image...</div>
   <p id="post-description">Loading description...</p>
   <p>Your full post content goes here.</p>
 </article>
