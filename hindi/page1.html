@@ -101,6 +101,29 @@
       border-radius: 12px;
       margin-bottom: 20px;
     }
+
+.featured-image-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.featured-image-container img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ccc;
+}
+
+/* Mobile: matchbox size */
+@media (max-width: 600px) {
+  .featured-image-container img {
+    width: 120px;
+    height: 150px;
+  }
+}
   </style>
 </head>
 <body>
@@ -115,22 +138,18 @@
 
   <!-- Language Buttons -->
   <div class="language-buttons">
-    <button onclick="location.href='#'" class="lang-btn">Hindi</button>
-    <button onclick="location.href='../page1.html'" class="lang-btn">English</button>
-    <button onclick="location.href='bengali.html'" class="lang-btn">Bengali</button>
+    <button onclick="location.href='../hindi/page1.html'" class="lang-btn">Hindi</button>
+    <button onclick="location.href='page1.html'" class="lang-btn">English</button>
+    <button onclick="location.href='../bengali/page1.html'" class="lang-btn">Bengali</button>
   </div>
 
-  <!-- Bengali Text -->
-  <p>এটি একটি বাংলা সূচীপত্র।</p>
-  <p>এটি একটি বাংলা পোস্ট।</p>
+<article>
+  <h1 id="post-title">Loading title...</h1>
+<div id="top-image-container" class="featured-image-container">Loading image...</div>
+  <p id="post-description">Loading description...</p>
+  <p>Your full post content goes here.</p>
+</article>
 
-  <div id="top-image-container">Loading image...</div>
-
-  <article>
-    <h1 id="post-title">Loading title...</h1>
-    <p id="post-description">Loading description...</p>
-    <p>Your full post content goes here.</p>
-  </article>
 
   <script>
     // Load and apply theme from localStorage
@@ -167,7 +186,7 @@
     // Load post data
     const currentPage = location.pathname.split('/').pop();
 
-    fetch('../posts.json')
+    fetch('posts.json')
       .then(res => res.json())
       .then(posts => {
         const post = posts.find(p => p.filename === currentPage);
