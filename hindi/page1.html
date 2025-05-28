@@ -142,6 +142,34 @@ body.dark-mode .home-btn {
   background-color: #333;
   color: white;
 }
+
+.post-tags {
+  font-size: 12px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.tag-icon {
+  margin-right: 4px;
+}
+
+.tag {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+body.dark-mode .tag {
+  background-color: #444;
+  color: #fff;
+}
+
   </style>
 </head>
 <body>
@@ -165,7 +193,14 @@ body.dark-mode .home-btn {
 <article>
   <h1 id="post-title">Loading title...</h1>
 <div id="top-image-container" class="featured-image-container">Loading image...</div>
-  <p id="post-description">Loading description...</p>
+
+ <div id="post-tags" class="post-tags">
+  <span class="tag-icon">🏷️Tags</span>
+  <span class="tag">SEO</span>
+  <span class="tag">HTML</span>
+  <span class="tag">Web Design</span>
+</div>
+
   <p>यह एक बांग्ला विवरण है।</p>
 </article>
 
@@ -230,8 +265,8 @@ body.dark-mode .home-btn {
 
         // Update title & description
         document.getElementById('post-title').textContent = post.title;
-        document.getElementById('post-description').textContent = post.description;
-      })
+
+             })
       .catch(err => {
         document.getElementById('top-image-container').textContent = 'Failed to load post data.';
         console.error(err);
