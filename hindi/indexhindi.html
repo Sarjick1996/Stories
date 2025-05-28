@@ -271,7 +271,12 @@ body.dark-mode .post-content::after {
   <div class="pagination" id="pagination"></div>
 
   <script>
-    const POSTS_PER_PAGE = 20;
+    let POSTS_PER_PAGE = 20;
+
+// Adjust for mobile devices
+if (window.innerWidth <= 600) {
+  POSTS_PER_PAGE = 10;
+}
     let currentPage = 1;
     let allPosts = [];
 
