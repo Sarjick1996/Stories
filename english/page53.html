@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loading...</title>
+  <style>
+    body {
+      max-width: 900px;
+      margin: auto;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.light-mode {
+      background-color: #faf3e0;
+      color: #111;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #cccccc;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .theme-label {
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #333;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .language-buttons {
+      display: flex;
+      gap: 8px;
+      margin: 10px 0 20px;
+    }
+
+    .lang-btn {
+      font-size: 12px;
+      padding: 4px 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    body.dark-mode .lang-btn {
+      background-color: #333;
+      color: white;
+    }
+
+    img.top-image {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+.featured-image-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.featured-image-container img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ccc;
+}
+
+.home-button-container {
+  margin-bottom: 10px;
+}
+.home-btn {
+  font-size: 12px;
+  padding: 8px 12px;
+  margin-right: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f1eee9; /* warm whitish tone */
+  color: #333;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+/* Dark mode variant */
+body.dark-mode .home-btn {
+  background-color: #d6cfc4;
+  color: #111;
+}
+
+.post-tags {
+  font-size: 12px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.tag-icon {
+  margin-right: 4px;
+}
+
+.tag {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+body.dark-mode .tag {
+  background-color: #444;
+  color: #fff;
+}
+@media (max-width: 700px) {
+  body {
+    max-width: 100% !important;
+    padding: 12px !important;
+  }
+
+  .featured-image-container img {
+    width: 200px;
+    height: 280px;
+  }
+
+  h1 {
+    font-size: 24px !important;
+  }
+
+  p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+
+  .lang-btn{
+    font-size: 14px !important;
+    padding: 6px 10px !important;
+  }
+
+  .home-btn {
+    font-size: 14px !important;
+    padding: 6px 10px !important;
+    background-color: #f8f1e9 !important; /* warm whitish background */
+    color: #333 !important;
+    font-weight: 600;
+    border: 1px solid #e0d6cc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .switch {
+    width: 40px !important;
+    height: 20px !important;
+  }
+
+  .slider:before {
+    height: 14px !important;
+    width: 14px !important;
+    left: 3px !important;
+    bottom: 3px !important;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(20px) !important;
+  }
+
+  .theme-label {
+    font-size: 14px !important;
+  }
+
+  .tag {
+    font-size: 10px !important;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <button onclick="location.href='indexenglish.html'" class="home-btn">Home</button>
+  <span class="theme-label" id="themeLabel">Light Mode</span>
+  <label class="switch">
+    <input type="checkbox" id="themeToggle" />
+    <span class="slider"></span>
+  </label>
+</div>
+
+  <!-- Language Buttons -->
+  <div class="language-buttons">
+    <button onclick="location.href='../hindi/page53.html'" class="lang-btn">हिन्दी</button>
+    <button onclick="location.href='page53.html'" class="lang-btn">English</button>
+    <button onclick="location.href='../bengali/page53.html'" class="lang-btn">বাংলা</button>
+
+  </div>
+
+<article>
+  <h1 id="post-title">Loading title...</h1>
+<div id="top-image-container" class="featured-image-container">Loading image...</div>
+
+<div id="post-tags" class="post-tags">
+  <span class="tag-icon">🏷️Tags</span>
+  <span class="tag">SEO</span>
+  <span class="tag">HTML</span>
+  <span class="tag">Web Design</span>
+</div>
+
+<small>
+My Mom is a Milking Machine
+</small>
+
+<p>
+
+
+Robbie was making his way toward the door with John, his buddy, when his mom called out from the kitchen.
+
+“Boys, are you going out?”
+
+“Uh, yeah, mom,” Robbie answered, his hand on the doorknob.
+
+“You meeting girls?” his mom asked.
+
+Robbie groaned. The 18-year-old boy and his friend were going out to meet girls.And he knew what his mom was up to.
+
+“No, mom, we’re not,” he lied, snickering at his friend. “Uh, we’re going to the movies.”
+
+His mother came around the corner, a smirk on her face. The 46-year-old woman was stunning, a short-haired blonde with exotic facial features, high cheekbones and narrow eyes atop a drop-dead gorgeous body honed muscular by years of aerobics. She wore a one-piece leopard-print bathing suit, cut away at the front to reveal hard washboard abs and high in the back and sides to show off her sculpted muscular ass. She’d been out sunning on the deck in the late afternoon son when Robbie and John had come by to change and go out. Now she stood, hands on hips, her tanned, muscular legs covered with a slight sheen of sweat.
+
+“Are you lying to me young man?” she asked, tongue in her cheek in a stern pose.
+
+“Uh, no, mom, I’m not,” he said nervously.
+
+“Robbie, if you’re going out with girls, you need to be milked, you know that, both of you,” she said. “And if you’re lying to me, I’ll milk you so badly you’ll never want to go out with girls again! Am I being clear? Again, are you going out with girls?”
+
+Robbie shook his head no, as did John. But the lies were evident. The woman smiled.
+
+“Lie detector test time,” she said, walking toward them. “I’ll start with John. You don’t want to see him suffer too much, do you Robbie?”
+
+John backed into the door, frightened, making it easy for Rhonda to grab him by the shirt and snake her hard arm around his neck for a punishing headlock. She waltzed him into her bedroom, Robbie behind them, protesting.
+
+“C’mon, Mom, leave him alone, please?” Robbie begged. “He’s one of the few friends you haven’t scared off.”
+
+Rhonda smiled and hiprolled John to the bed where he sat up, confused.
+
+“Robbie, what the fuck?” he asked, a bewildered look on his face. “What the hell is this, and what is milking?”
+
+“You’ll see in short order,” Rhonda said. “For now, I want you to tell me the truth, are you going out with girls?”
+
+With that, she threw herself at the seated boy, legs first, her educated thighs opening and closing like a mousetrap on John’s throat, crashing behind him on the bed and taking him down in a flying neckscissors. She leaned up on her hands and snapped her legs down hard on him, fixing his Adam’s apple into the crook of her top leg, hooking that foot around her muscular calf and crushing down. The figure four, one of her favorite domination holds, was cutting off the blood to John’s brain, taking him to the edge of unconsciousness in seconds. His hands pawed the clenched legs that scissored him, his eyes bugged out in pain and terror.
+
+“You’re not escaping, John, no one escapes my scissor holds, just ask Robbie,” she growled down at him. “I’ve been scissoring him since he was a child, to keep him in line...and his father, which is the main reason he divorced me, I think!!”
+
+John couldn’t speak from the crush of leg on his throat. Robbie stood watching helplessly.
+
+“Mom, stop, you’re hurting him,” he begged.
+
+“Are you going out with girls?”
+
+John screamed in pain.
+
+“Yes, yes, we are, OK?” Robbie yelled. “Please, unlock your scissors.”
+
+Rhonda smiled and sprung open her legs. John sat up, sputtering as she scooted around him to sit next to him on the bed.
+
+“Milking, John, is when I take your cock in my hand, or wherever else I choose, and milk the sperm from you so you won’t be inclined to have illicit sex with young girls,” she said calmly, looking into John’s eyes.
+
+“You what?” he sputtered.
+
+“I extract cum from you, usually by hand, I milk you,” she said. “Do you want to go first or does Robbie? Sometimes if I do you both at once, it goes faster.”
+
+John couldn’t believe his ears and stood to leave.
+
+“Fuck this, I’m outta here,” he said, moving toward the door. “No old broad is gonna lay a hand on my cock.”
+
+“Dude, don’t piss her off,” Robbie warned.
+
+Rhonda was on John in a flash, leaping up and landing on his shoulders, pinning his head tight in her muscular thighs. She rode him to the living room and bulldogged him to the floor, arching her back and pouring hundreds of pounds of pressure into his skull. He screamed in pain and then slumped down, beaten and nearly out. Rhonda let up only to sit on his face and extend her legs out behind him to engulf John’s face up her sculpted ass, a brutally tight reverse facescissors on him. She quickly pulled down his pants and as he came around, she began stroking his soft cock.
+
+“Mmmm, this looks like a good-sized one, Robbie, whaddya think, it’s bigger than yours or what?” she teased, burying her face in John’s pubic area, lapping her velvety tongue around the base of his stiffening prick.
+
+John fought the urge, but he couldn’t, not with Rhonda’s educated hand beating his meat to its full 9-inch height. She groaned as she watched it grow full and fat. Her hand speeded up, using the constant oozing of pre-cum from its mushroom head to coat her pounding fist, her fingers a blur as they played up and down his giant dong. He moaned into the clamp of her ass in which his face was trapped.
+
+“He’s gonna milk reeaaaaaal fine, Robbie, you just watch,” Rhonda said, licking her lips that were inches from John’s quivering fuckstick. “Come for me, baby, come for me!!”
+
+Rhonda used her free hand to maul John’s thick nut package, milking it along with his prick. John fought the feeling, but soon succumbed, letting out a long, low moan into the muffocating clamp of her muscular ass as his cock jetted a half dozen three-foot arcs of ball juice high into the air, landing in thick strips along his legs, Rhonda’s arm and her moaning face. She quickly stuffed the bulbous cap into her groaning mouth to take the rest of John’s incredibly thick load, gobbling up the cream into her cheeks and holding it there, so great the quantity of his youthful joy juice that it oozed out the corners of her mouth, down her chin and throat to line the creamy titties that stuck out of her bathing suit. She milked him dry, stroking his cock until it could give no more. Then popping the pulsating dickhead from her sucking mouth, she leaned up on her hands, the frightening scissorlock still on John’s head, which was now turning purple in Rhonda’s leggy embrace. She smiled up at Robbie, her face a comey mess, the load still in her mouth. She curled a finger toward him and mouthed the words “Kiss Mommy,” a chinful of goop blobbing out before she closed her lips to keep the rest in.
+
+“No...Mom, please, not that again, please, no....” Robbie begged, tears in his eyes.
+
+Rhonda smiled - and laid down a scary, full-bore crunch of her muscular thighs that nearly busted John’s jawbones and popped his eyes out of his scissored skull. He screamed in agony, his trembling hands pawing the thick meat of Rhonda’s relentless legs.
+
+
+“OK, OK!!!” Robbie said, kneeling before his mom.
+
+She laid him down, on his back, his head on John’s legs. She lowered her grinning face to his, opened his mouth and then hers, the thick load of cream running from her lips to his gullet. She quickly attached her mouth to his and rammed her long tongue down his throat, swabbing his cheeks and lathering every inch of the inside of his mouth in his best friend’s cum. Robbie cried, his eyes closed, as Rhonda force fed him John’s spunky brew. She pulled back, a grin on her face, cum all over it.
+
+“Lick me clean, sonny boy,” Rhonda growled. “Lick his cum from Mommy’s face...and tits.”
+
+Robbie obeyed, gamely lapping the cream from his mother’s cheeks, chin, neck and thick boobs. John, meanwhile, was still languishing in the non-stop scissor lock of Rhonda’s punishing thighs. And she still clung to his dick, pumping it slowly in her hand. It was still hard.
+
+“I love the young bucks,” she growled, nibbling the head of John’s prick, lapping up some excess spunk that gathered in the eye hole. “They stay up forever.”
+
+To prove her point, Rhonda started handjobbing John again, jacking his big cock up and down as Robbie ran to the kitchen to wipe his face clean. She leaned up on one hand and looked over her muscular back, into the meaty maw of her ass that wrapped itself like a fleshy mitt over John’s face.
+
+“Come again for me, Johnny boy, and I’ll let you go,” she growled. “Be happy I’m only gonna give you two milkings tonight.”
+
+John closed his eyes and tried shutting out the pain, but Rhonda’s thick ass smothered his nose in the meaty crack, her adductors of the inner thighs slicing into his head. The feeling in his nuts grew again as her relentless cock attack increased and she again attached that incredible vacuum of a mouth to it, sucking him all the way down her throat, milking his cock with her neck muscles, and pulling out again, jacking off the exposed, slick meat on the upstroke. She was a jerking-sucking machine and in less than five minutes from his last orgasm, he was giving up another.
+
+“This one’s all mine, Robbie, don’t you worry,” she hissed, popping the spurting head into her sucking mouth.
+
+For a solid minute, she jerked the big stem into her mouth, moaning in orgasmic delight as she did, gobbling down every thick ounce of his teen boy nut cream. When she was done, she put on a scissor so fierce, it knocked him out instantly. She unhinged her great legs from his face and his head plopped to the floor. She smiled and leaned down to give his lips a kiss with her comey ones.
+
+“Sleep tight while I milk your buddy,” she hissed.
+
+Robbie cowered on the couch. Rhonda stood before him, pointing to her thighs.
+
+“We can do this the hard way,” she said, slamming her meaty limbs together. “Or the easy way. What’ll it be?”
+
+Robbie stood up, trembling, and dropped his pants. His cock, a good deal smaller than John’s, stood out straight. Rhonda smiled.
+
+“On your knees,” she ordered him. “We’ll do it BOTH ways!!”
+
+Rhonda bent her son’s moaning head and took him in a reverse standing headscissors, her iron upper thighs lacing around his ears, the back of his head snug in her ass. She crossed her legs - but not before scooting them forward to take his stiff prick in the scissored velvety clamp of her muscular calves. As she scissored his big head, she also scissored the little one, rubbing her silky calves over the dick trapped inside. Robbie moaned, from pain and pleasure. It wouldn’t be long. It never was in mom’s legs.
+
+“Cum for Mommy baby, cum in Mommy’s calf fuck,” she hissed, rubbing her pussy into the back of his neck as she squeezed his skull and prick. “Cum all over Mommy’s big, nasty calves!!”
+
+And Robbie did, a thick load of nut brew pulsating out of his trapped cock and lining the interior muscle walls of Rhonda’s calves. His cock wasn’t that small, but Rhonda’s calves were that big, enough so to engulf the spurting head of his prick and capture the entire load. When he was done cumming, she unlocked her legs and his face slipped down - into her calves.
+
+“Lick it up, wonder boy, you put it there, you suck ‘em clean!” she growled, scissoring his face in the comey clamp of her muscular calves. “LICK ‘EM!!”
+
+Robbie obeyed, slipping out his tongue and sucking up the soup from his mother’s calves, gobbling his goop from the muscled meat of her lower legs until they shone clean, and wetted more by his tears. Rhonda pulled him to his feet and knelt before him.
+
+“Round two, on me this time,” she hissed, sucking his cock into the heated confines of her throat, milking it and keeping it stiff.
+
+John woke up with a splitting headache, and sat up rubbing his eyes, only to focus on a beautiful middle-aged woman in the middle of the living room deepthroating her son’s cock, jacking it in one hand, rubbing his balls in the other. He blinked hard, not believing the site, but then recalling his own cock being blown dry by the foxy lady on her knees a few feet away.
+
+“Fuck....” he hissed, trying to stand up.
+
+“Rest up, Johnny, and watch,” she growled, pulling Robbie’s dick from her throat and jacking the spit-slimed dick against her smooth cheek. “I already got him off once in my calves, now I’m milking him again.”
+
+She popped Robbie’s cock back into her mouth and within minutes was coaxing another load from her son’s balls, pulling and squeezing them in her hand as she did. Robbie’s head was back, his eyes closed, as he jetted a thick load down his mother’s throat. This time she swallowed it all up, smacking her lips as she finished.
+
+“Both of you, on the couch, now,” she growled, not letting go of Robbie’s still stiff meat, forcing him to sit on the couch.
+
+John considered trying to run but then Rhonda, reading his mind, slap-locked her muscular legs together in a mock scissors - and John immediately ran to the couch to sit next to Robbie.
+
+“Man, is she always like this?” he asked Robbie as Rhonda jacked both stiff pricks now.
+
+“Just on milking nights,” Robbie sighed. “Like this one.”
+
+“She milk you to keep you from getting laid?” John asked.
+
+“Now you get the picture,” Rhonda hissed from her knees. “Now shut up and cum for me, both of you!!”
+
+Rhonda furiously jagged both stiff dicks in her hands, John’s in her left, Robbie’s in her right, occasionally slicking them down by sucking one into her mouth, then the other. It didn’t take too long before both boys were jetting surprisingly huge loads into the air. Rhonda growled in pleasure.
+
+“YAAAAAAAA!!!” she said, clenching her teeth and pounding their puds in her tight fists, a thick layer of cum covering them and giving the jack-off session a loud, lewd squishy sound. “Cummmmmmm!!”
+
+And they did, long and hard, a creamy coating of boy seed pasting up and down Rhonda’s muscular forearms. She finally stopped and bent her head to suck their cockheads clean. She moved them apart and sat between them, holding a cum-coated arm up before each one.
+
+“Lick ‘em clean, boys, or back in my scissors you go for another milking!!”
+
+Reluctantly, John lapped at Rhonda’s forearm covered in Robbie’s goo and Robbie did the same with the other. Rhonda sat smiling as her teen victims sucked the cum clean from her. She then stood up and pointed to their now droopy cocks.
+
+“That’s more like it,” she cooed, walking back toward the kitchen. “Now you guys can go on your dates and remember, don’t do anything I WOULD do? Got it?”
+
+
+
+</p>
+</article>
+
+
+  <script>
+    // Load and apply theme from localStorage
+    const toggle = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
+    const body = document.body;
+
+    function setTheme(mode) {
+      if (mode === 'dark') {
+        body.classList.replace('light-mode', 'dark-mode');
+        label.textContent = 'Dark Mode';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.classList.replace('dark-mode', 'light-mode');
+        label.textContent = 'Light Mode';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-mode');
+      label.textContent = 'Dark Mode';
+      toggle.checked = true;
+    } else {
+      body.classList.add('light-mode');
+      label.textContent = 'Light Mode';
+    }
+
+    toggle.addEventListener('change', () => {
+      setTheme(toggle.checked ? 'dark' : 'light');
+    });
+
+    // Load post data
+    const currentPage = location.pathname.split('/').pop();
+
+    fetch('posts.json')
+      .then(res => res.json())
+      .then(posts => {
+        const post = posts.find(p => p.filename === currentPage);
+        if (!post) {
+          document.getElementById('top-image-container').textContent = 'Post not found.';
+          document.getElementById('post-title').textContent = '';
+          document.getElementById('post-description').textContent = '';
+          return;
+        }
+
+        // Set page title
+        document.title = post.title;
+
+        // Show image
+        const container = document.getElementById('top-image-container');
+        container.textContent = ''; // clear loading text
+        const img = document.createElement('img');
+        img.src = post.image;
+        img.alt = post.title;
+        img.className = 'top-image';
+        container.appendChild(img);
+
+        // Update title & description
+        document.getElementById('post-title').textContent = post.title;
+      })
+      .catch(err => {
+        document.getElementById('top-image-container').textContent = 'Failed to load post data.';
+        console.error(err);
+      });
+  </script>
+
+<div style="margin-top: 40px;">
+  <style>
+    .hidden-link a {
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      text-decoration: none;
+      padding: 8px 14px;
+      border: 1px solid #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+      background-color: rgba(255, 255, 255, 0.05);
+      color: inherit;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .hidden-link a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+    }
+
+    body.dark-mode .hidden-link a {
+      border-color: #eee;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+
+    body.light-mode .hidden-link a {
+      border-color: #333;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+    }
+
+    body.light-mode .hidden-link a:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+
+  <p class="hidden-link" style="display: none;"><a href="page2.html">Visit my site</a></p>
+  <p class="hidden-link" style="display: none;"><a href="#">Link 2</a></p>
+  <p class="hidden-link" style="display: none;"><a href="#">Link 3</a></p>
+  <p class="hidden-link" style="display: none;"><a href="#">Link 4</a></p>
+  <p class="hidden-link" style="display: none;"><a href="#">Link 5</a></p>
+</div>
+
+
+</body>
+</html>
