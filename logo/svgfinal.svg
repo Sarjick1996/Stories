@@ -3,7 +3,7 @@
   <text font-weight="bold" fill="#ff3366" font-size="50" font-family="Arial, sans-serif" y="90" x="99">
     XXX
   </text>
-  <text stroke-width="1" stroke="black" font-weight="bold" fill="white" font-size="50" font-family="Arial, sans-serif" y="90" x="200">
+  <text stroke-width="1" stroke="black" font-weight="bold" fill="#F0D8A8" font-size="50" font-family="Arial, sans-serif" y="90" x="200">
     Stories
   </text>
 </svg>
