@@ -258,9 +258,37 @@ body.dark-mode .post-content::after {
         font-size: 14px;
       }
     }
+/* Show desktop logo only on larger screens */
+.logo-desktop {
+  display: block;
+}
+
+.logo-mobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .logo-desktop {
+    display: none;
+  }
+
+  .logo-mobile {
+    display: block;
+  }
+}
+
   </style>
 </head>
 <body>
+<div class="logo-desktop">
+  <img src="../logo/svgfinal.svg" alt="Logo" style="width: 500px; height: 150px; display: block; margin: 0 auto 10px;">
+</div>
+
+<!-- Mobile Logo -->
+<div class="logo-mobile">
+  <img src="../logo/svgfinal.svg" alt="Logo" style="width: 200px; height: auto; display: block; margin: 0 auto 10px;">
+</div>
+
   <div class="top-bar">
     <span class="theme-label" id="themeLabel">Light Mode</span>
     <label class="switch">
@@ -275,10 +303,6 @@ body.dark-mode .post-content::after {
     <button onclick="location.href='../english/indexenglish.html'" class="lang-btn">English</button>
     <button onclick="location.href='../bengali/indexbengali.html'" class="lang-btn">বাংলা</button>
   </div>
-
-  <div style="text-align: center; margin-bottom: 20px;">
-  <img src="../logo/svgfinal.svg" alt="Logo" style="width: 500px; height: 150px; display: block; margin: 0 auto 10px;">
-</div>
 
 
 // <h1>यह एक हिंदी पोस्ट है।</h1>
