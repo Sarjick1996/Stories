@@ -276,6 +276,32 @@ body.dark-mode .post-content::after {
     display: block;
   }
 }
+
+.scrolling-warning {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.scrolling-warning span {
+  display: inline-block;
+  padding-left: 100%;
+  font-size: 13px;
+  font-weight: bold;
+  color: #e57373;
+  animation: scroll-left 15s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
   </style>
 </head>
 <body>
@@ -288,9 +314,13 @@ body.dark-mode .post-content::after {
 <div class="logo-mobile">
   <img src="../logo/svgfinal.svg" alt="Logo" style="width: 200px; height: auto; display: block; margin: 0 auto 10px;">
 </div>
-<p style="text-align: center; font-size: 13px; font-weight: bold; color: #e57373; margin-bottom: 20px;">
-  Warning: This site contains adult content. By proceeding, you confirm that you are 18+ and agree to view it at your own discretion.
-</p>
+
+<div class="scrolling-warning">
+  <span>
+    Warning: This site contains adult content. By proceeding, you confirm that you are 18+ and agree to view it at your own discretion.
+  </span>
+</div>
+
   <div class="top-bar">
     <span class="theme-label" id="themeLabel">Light Mode</span>
     <label class="switch">
