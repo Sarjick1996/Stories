@@ -366,8 +366,8 @@ body.dark-mode p {
 
     // Load post data
     const currentPage = location.pathname.split('/').pop();
-
-    fetch('json/posts.json')
+  
+  fetch('https://stories-1hp.pages.dev/english/posts.json')
       .then(res => res.json())
       .then(posts => {
         const post = posts.find(p => p.filename === currentPage);
