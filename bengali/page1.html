@@ -367,7 +367,7 @@ body.dark-mode p {
     // Load post data
     const currentPage = location.pathname.split('/').pop();
 
-    fetch('posts.json')
+    fetch('json/posts.json')
       .then(res => res.json())
       .then(posts => {
         const post = posts.find(p => p.filename === currentPage);
