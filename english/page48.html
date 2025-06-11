@@ -521,9 +521,9 @@ Even after the children were born, my mother and father would fuck them individu
     toggle.addEventListener('change', () => {
       setTheme(toggle.checked ? 'dark' : 'light');
     });
-
     // Load post data
-    const currentPage = location.pathname.split('/').pop();
+    let currentPage = location.pathname.split('/').pop();
+if (!currentPage.endsWith('.html')) currentPage += '.html';
 
     fetch('posts.json')
       .then(res => res.json())

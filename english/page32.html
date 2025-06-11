@@ -318,7 +318,8 @@ I will enter your pussy myself oh sister ahhhhhhhhhhhh ohhhhhhhhhhhhh eat my pus
     });
 
     // Load post data
-    const currentPage = location.pathname.split('/').pop();
+    let currentPage = location.pathname.split('/').pop();
+if (!currentPage.endsWith('.html')) currentPage += '.html';
 
     fetch('posts.json')
       .then(res => res.json())

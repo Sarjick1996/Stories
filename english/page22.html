@@ -310,7 +310,8 @@ Even though I got up, my body didn't grow much, I have a small, thin body, that'
     });
 
     // Load post data
-    const currentPage = location.pathname.split('/').pop();
+    let currentPage = location.pathname.split('/').pop();
+if (!currentPage.endsWith('.html')) currentPage += '.html';
 
     fetch('posts.json')
       .then(res => res.json())

@@ -352,7 +352,8 @@ Then he made me lie down again and placed his penis near my penis. Gently, inser
     });
 
     // Load post data
-    const currentPage = location.pathname.split('/').pop();
+    let currentPage = location.pathname.split('/').pop();
+if (!currentPage.endsWith('.html')) currentPage += '.html';
 
     fetch('posts.json')
       .then(res => res.json())

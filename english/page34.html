@@ -337,9 +337,9 @@ Since then, I have been having an illicit relationship with Apu. Whenever we get
     toggle.addEventListener('change', () => {
       setTheme(toggle.checked ? 'dark' : 'light');
     });
-
     // Load post data
-    const currentPage = location.pathname.split('/').pop();
+    let currentPage = location.pathname.split('/').pop();
+if (!currentPage.endsWith('.html')) currentPage += '.html';
 
     fetch('posts.json')
       .then(res => res.json())

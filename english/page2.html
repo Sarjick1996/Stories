@@ -325,7 +325,8 @@ After doing this for a while, first I would rub my penis in my sister's vagina f
     });
 
     // Load post data
-    const currentPage = location.pathname.split('/').pop();
+    let currentPage = location.pathname.split('/').pop();
+if (!currentPage.endsWith('.html')) currentPage += '.html';
 
     fetch('posts.json')
       .then(res => res.json())

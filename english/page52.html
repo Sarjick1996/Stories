@@ -381,8 +381,9 @@ Husband and wife introduced each other and here Gwen got pregnant in my house an
       setTheme(toggle.checked ? 'dark' : 'light');
     });
 
-    // Load post data
-    const currentPage = location.pathname.split('/').pop();
+       // Load post data
+    let currentPage = location.pathname.split('/').pop();
+if (!currentPage.endsWith('.html')) currentPage += '.html';
 
     fetch('posts.json')
       .then(res => res.json())

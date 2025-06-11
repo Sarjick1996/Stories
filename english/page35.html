@@ -378,8 +378,9 @@ Aunt had booked four seats in the 1st class compartment. After a while, the chec
       setTheme(toggle.checked ? 'dark' : 'light');
     });
 
-    // Load post data
-    const currentPage = location.pathname.split('/').pop();
+       // Load post data
+    let currentPage = location.pathname.split('/').pop();
+if (!currentPage.endsWith('.html')) currentPage += '.html';
 
     fetch('posts.json')
       .then(res => res.json())

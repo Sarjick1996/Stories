@@ -442,8 +442,9 @@ Slowly pressing, he stuffed the head of his brother's penis inside my anal slit.
       setTheme(toggle.checked ? 'dark' : 'light');
     });
 
-    // Load post data
-    const currentPage = location.pathname.split('/').pop();
+      // Load post data
+    let currentPage = location.pathname.split('/').pop();
+if (!currentPage.endsWith('.html')) currentPage += '.html';
 
     fetch('posts.json')
       .then(res => res.json())

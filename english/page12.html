@@ -396,7 +396,8 @@ After that, after taking a bath, they came home and fell asleep completely exhau
     });
 
     // Load post data
-    const currentPage = location.pathname.split('/').pop();
+    let currentPage = location.pathname.split('/').pop();
+if (!currentPage.endsWith('.html')) currentPage += '.html';
 
     fetch('posts.json')
       .then(res => res.json())

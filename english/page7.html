@@ -317,8 +317,9 @@ I went to the house with him, when I got home I saw no one was home, I said wher
       setTheme(toggle.checked ? 'dark' : 'light');
     });
 
-    // Load post data
-    const currentPage = location.pathname.split('/').pop();
+        // Load post data
+    let currentPage = location.pathname.split('/').pop();
+if (!currentPage.endsWith('.html')) currentPage += '.html';
 
     fetch('posts.json')
       .then(res => res.json())
