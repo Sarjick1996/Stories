@@ -332,8 +332,9 @@ body.dark-mode .tag {
       setTheme(toggle.checked ? 'dark' : 'light');
     });
 
-    // Load post data
-    const currentPage = location.pathname.split('/').pop();
+     // Load post data
+    let currentPage = location.pathname.split('/').pop();
+if (!currentPage.endsWith('.html')) currentPage += '.html';
 
     fetch('posts.json')
       .then(res => res.json())
