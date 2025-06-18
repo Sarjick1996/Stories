@@ -258,27 +258,28 @@ body.dark-mode .post-content::after {
   body.light-mode .post {
     border-color: rgba(0, 0, 0, 0.2); /* Blackish border */
   }
-  .logo-mobile {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    padding: 0;
-    line-height: 0;
-  }
+    .scrolling-banner,
+    .scrolling-warning {
+      margin-top: 0 !important;
+      margin-bottom: 2px !important;
+      padding-top: 2px !important;
+      padding-bottom: 2px !important;
+      line-height: 1 !important;
+    }
 
-  .logo-mobile img {
-    margin: 0 auto;
-    display: block;
-    height: 90px;
-    width: auto;
-  }
+    .logo-mobile {
+      margin-top: 2px !important;
+      margin-bottom: 2px !important;
+      padding: 0 !important;
+      line-height: 0 !important;
+    }
 
-  .scrolling-banner,
-  .scrolling-warning {
-    margin-top: 0;
-    margin-bottom: 6px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
+    .logo-mobile img {
+      margin: 0 auto !important;
+      display: block !important;
+      height: auto !important;
+      max-height: 80px !important;
+    }
 }
 
 
