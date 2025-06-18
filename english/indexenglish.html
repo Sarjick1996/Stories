@@ -258,14 +258,20 @@ body.dark-mode .post-content::after {
   body.light-mode .post {
     border-color: rgba(0, 0, 0, 0.2); /* Blackish border */
   }
-    .scrolling-banner,
-    .scrolling-warning {
-      margin-top: 0 !important;
-      margin-bottom: 2px !important;
-      padding-top: 2px !important;
-      padding-bottom: 2px !important;
-      line-height: 1 !important;
-    }
+.scrolling-banner {
+  margin-bottom: 6px !important; /* <-- Increased space below top banner */
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  line-height: 1 !important;
+}
+
+.scrolling-warning {
+  margin-top: 0 !important;
+  margin-bottom: 2px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  line-height: 1 !important;
+}
 
     .logo-mobile {
       margin-top: 2px !important;
