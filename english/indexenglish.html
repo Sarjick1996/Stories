@@ -560,6 +560,13 @@ if (window.innerWidth <= 600) {
     });
   </script>
 <script>
+  // Bypass age modal for search engine crawlers
+  const isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
+  if (isBot) {
+    document.getElementById("ageConsentModal").style.display = "none";
+  }
+</script>
+<script>
   const consentModal = document.getElementById("ageConsentModal");
   const consent = localStorage.getItem("ageConfirmed");
   const consentTime = localStorage.getItem("consentTime");
