@@ -19,6 +19,7 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="light dark">
   <title>Free Sex Stories for Fun and Fantasy | Read for Fun and Desire</title>
 
 
@@ -364,72 +365,255 @@ body.dark-mode .post-content::after {
     transform: translateX(-100%);
   }
 }
-.scrolling-banner {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  background-color: rgba(255, 255, 255, 0.3); /* translucent white background */
-  padding: 8px 0;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  text-align: center;
-}
 
-.scrolling-banner span {
-  display: inline-block;
-  padding-left: 100%;
-  font-size: 14px;
-  font-weight: 500;
-  color: #333; /* default for light mode */
-  animation: scroll-banner 100s linear infinite;
-}
 
-body.dark-mode .scrolling-banner {
-  background-color: rgba(255, 255, 255, 0.1); /* slightly more transparent in dark mode */
-}
 
-body.dark-mode .scrolling-banner span {
-  color: #ffffff; /* true white text in dark mode */
-}
 
+
+/* === TAG BANNER SCROLL ANIMATION === */
 @keyframes scroll-banner {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
+}
+
+/* === SHARED BASE STYLES === */
+.seo-tag-banner {
+  overflow: hidden;
+  padding: 10px 0;
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.seo-tag-track {
+  display: inline-flex;
+  gap: 1rem;
+  white-space: nowrap;
+  animation: scroll-banner 25s linear infinite;
+  padding-left: 100%;
+}
+
+.seo-tag-track a {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+  border: 1px solid;
+}
+
+/* === LIGHT MODE (Pink Theme) === */
+body.light-mode .seo-tag-banner {
+  background: #fff0f6;
+  border-top: 1px solid #ffb6c1;
+  border-bottom: 1px solid #ffb6c1;
+}
+
+body.light-mode .seo-tag-track a {
+  background: #ffe4ec;
+  color: #c2185b;
+  border-color: #ffc1d6;
+}
+
+body.light-mode .seo-tag-track a:hover {
+  background: #ffd2e1;
+  color: #b0003a;
+}
+
+/* === DARK MODE (Dark Theme) === */
+body.dark-mode .seo-tag-banner {
+  background: #111;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+body.dark-mode .seo-tag-track a {
+  background: #222;
+  color: #fff;
+  border-color: #444;
+}
+
+body.dark-mode .seo-tag-track a:hover {
+  background: #444;
+  color: #fff;
+}
+
+/* === MOBILE RESPONSIVENESS === */
+@media (max-width: 768px) {
+  .seo-tag-banner {
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0;
+  }
+}
+
+
+
+/* === Featured Story Horizontal Scroller === */
+.featured-stories-bar {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.featured-track {
+  display: flex;
+  width: max-content;
+  animation: scrollLoop 15s linear infinite;
+}
+
+.featured-track .post {
+  flex: 0 0 auto;
+  width: 280px;
+  height: 70px; /* Match image height */
+  margin-right: 18px;
+  display: flex;
+  flex-direction: row-reverse; /* Image on the right */
+  align-items: center;
+  padding: 0 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.featured-track .post img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+.featured-track .post-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.featured-track .post-content h2 {
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.featured-track .post-content p {
+  font-size: 11px;
+  margin: 2px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #d6a940;
+}
+
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.featured-stories-bar:hover .featured-track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 600px) {
+  .featured-track .post {
+    width: 230px;
+    height: 70px;
+    padding: 0 6px;
+  }
+
+  .featured-track .post-content h2 {
+    font-size: 12px;
+  }
+
+  .featured-track .post-content p {
+    font-size: 10px;
+  }
+}
+
+
+/* === FIX: Language Button Visibility === */
+body.light-mode .lang-btn {
+  background-color: #e0e0e0;
+  color: #111;
+  border: 1px solid #bbb;
+}
+
+body.light-mode .lang-btn:hover {
+  background-color: #d4d4d4;
+}
+
+body.dark-mode .lang-btn {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+body.dark-mode .lang-btn:hover {
+  background-color: #333;
+}
+
+
+/* === FIX: Pagination Buttons === */
+body.light-mode .pagination button {
+  background-color: #f9f9f9;
+  color: #111;
+  border: 1px solid #ccc;
+}
+
+body.light-mode .pagination button.active {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+body.dark-mode .pagination button {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  border: 1px solid #333;
+}
+
+body.dark-mode .pagination button.active {
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
 }
   </style>
 </head>
 <body>
-<div id="ageConsentModal" style="position:fixed;top:0;left:0;width:100%;height:100%;
-background-color:rgba(0,0,0,0.85);display:flex;flex-direction:column;justify-content:center;
-align-items:center;z-index:10000;color:white;text-align:center;padding:20px;">
-  <h2>Attention!</h2>
-  <p style="max-width: 500px; font-size: 15px;">
-    This site contains adult content. By entering this website, I acknowledge that I am 18 years old or older 
-    and agree to the <a href="#terms" style="color: #ff69b4; text-decoration: underline;">Terms of Service</a>, 
-    which are available on the site.
-  </p>
-  <div style="margin-top:20px;">
-    <button id="consentYes" style="padding:12px 24px;margin-right:12px;
-      background: linear-gradient(45deg, #ff4da6, #ff66cc); border:none;
-      border-radius:6px; color:white; font-weight:bold; font-size:14px;
-      cursor:pointer; transition:0.3s;">Agree</button>
-    
-    <button id="consentNo" style="padding:12px 24px;
-      background: linear-gradient(45deg, #ff4da6, #ff66cc); border:none;
-      border-radius:6px; color:white; font-weight:bold; font-size:14px;
-      cursor:pointer; transition:0.3s;">Not Agree</button>
-  </div>
-</div>
-<div class="scrolling-banner">
-  <span>
-    best collection of free sex stories —  mom son sex story, bro sis sex stories, family sex stories, family sex videos, incest stories,desi sex video, indian sex videos, real incest, mother son hentai, hot comics, reddit sex comics, porn sex comics, sex comics, gay sex comics, furry sex comics, anime sex comics, cartoon sex comics, hentai manga, mom son sex comics, mom son sex porn, real sister porn, little sister porn, sleeping sister porn, manga, my reading manga, solo leveling manga, reddit manga, manga reddit, one punch man manga, manga hentai, mother son incest porn, sitting on my son's lap, sitting on my son's lap stories, sitting on my son's lap 2, nifty erotic stories, incest erotic stories, erotic stories online, taboo erotic stories, erotic stories free, audio erotic stories, erotic stories audio, indian erotic stories, incest english sex stories, english sex stories xossip, english sex stories mom, real mom son sex stories, free mom son sex stories, mom son sex stories indian, mom son sex stories desi, best mom son sex stories, desi mom son sex stories, mom son sex, real mom son sex, mom son sex video, mom son sex videos, japanese mom son sex, bro sis porn, bro sis fuck, bro sis hentai, xxx bro sis, real bro sis incest, adin ross sister porn, real brother and sister porn, brother sister porn, brother sister sex, brother sister incest, brother sister hentai, brother sister fuck, incest porn, incest, real incest porn, incest hentai, pure taboo, taboo porn, taboo season 2, taboo sex, taboo sex stories, family sex, real family sex, family sex porn, family sex games, indian sex story, gay sex story, hindi sex story, taboo sex story, ai sex story, telugu sex story, adult sex dolls, adult sex comics, adult sex game, adult sex story.
-  </span>
-</div>
 
+<!-- SEO Tag Banner -->
+<section aria-label="Popular Tags" class="tag-section">
+  <div class="seo-tag-banner">
+    <div class="seo-tag-track">
+      <a href="https://prosexstory.com/english/page4">Aunty sex story</a>
+      <a href="https://prosexstory.com/english/page41">incest erotic stories</a>
+      <a href="https://prosexstory.com/english/page12">english sex stories</a>
+      <a href="https://prosexstory.com/english/page1">mom son sex stories</a>
+      <a href="https://prosexstory.com/english/page6">real mom son sex</a>
+      <a href="https://prosexstory.com/english/page23">bro sis porn</a>
+      <a href="https://prosexstory.com/english/page15">brother sister sex</a>
+      <a href="https://prosexstory.com/english/page49">incest porn</a>
+      <a href="https://prosexstory.com/english/page51">milf fucking stories</a>
+      <a href="https://prosexstory.com/english/page53">family sex videos</a>
+      <a href="https://prosexstory.com/english/page5">japanese family sex</a>
+      <a href="https://prosexstory.com/english/page3">family sex comics</a>
+      <a href="https://prosexstory.com/english/page10">Xvideos sex stories</a>
+      <a href="https://prosexstory.com/english/page11">xnxx sex stories</a>
+      <a href="https://prosexstory.com/english/page16">dad daughter sex</a>
+    </div>
+  </div>
+</section>
 <div class="logo-desktop">
   <img src="../logo/svgfinal.svg" alt="Logo" style="width: 500px; height: 150px; display: block; margin: 0 auto 3px;">
 </div>
@@ -460,7 +644,75 @@ align-items:center;z-index:10000;color:white;text-align:center;padding:20px;">
     <button onclick="location.href='../bengali/indexbengali.html'" class="lang-btn">বাংলা</button>
   </div>
 
+<div class="featured-stories-bar">
+  <div class="featured-track" id="featuredTrack">
 
+    <!-- Featured Story Card Example (copy as needed) -->
+    <a href="page1.html" class="post-link" title="Mother and Son Sex Story">
+      <div class="post">
+        <div class="post-content">
+          <h2>Mom Son Sex Story</h2>
+          <p>Now I took my mother's milk in one mouth and started sucking it and started pounding it. After about 8-9 minutes, my penis would come. I quickly took out the penis and ejaculated in the mouth of the slut and in the milk. This was the best wish of my life that I fulfilled. In this state, (sex stories mom son sex stories indian mom son sex stories telugu mom son sex stories real mom son sex stories free mom son sex stories mom son sex stories indian mom son sex stories desi best mom son sex stories desi mom son sex stories tamil mom son sex stories mom son sex stories xxx dad mom son sex stories mom son sex stories porn true mom son sex stories mom son sex stories audio drunk mom son sex stories taboo mom son sex stories mom son sex stories in hindi xxx mom son sex stories)</p>
+        </div>
+        <img src="images/img1.jpg" alt="milf mom sex" />
+      </div>
+    </a>
+
+    <a href="page17.html" class="post-link" title="mom son sex story">
+      <div class="post">
+        <div class="post-content">
+          <h2> Mother's youth at uncle's wedding</h2>
+          <p>Mother: What did you do? Now will I show my face to everyone. How did you become like this? What will happen if you are handed over to the police now? Have you ever thought about it? choti golpo incest I sat down on the ground crying. Sorry ma, I made a mistake (real mother son incest, mother son tattoo ideas, mother son incest porn, mother son hentai, real brother sister porn, teen sister porn, twin sister porn, giantess sister porn, japanese sister porn, anime sister porn, drunk sister porn, big sister porn, bratty sister porn, bro sis porn, bro sis fuck)</p>
+        </div>
+        <img src="images/img17.jpg" alt="mom son sex" />
+      </div>
+    </a>
+    <a href="page38.html" class="post-link" title=" Sister sex story ">
+      <div class="post">
+        <div class="post-content">
+          <h2> My Dominant Elder Sister</h2>
+          <p>Sis said, "Your pussy has hardened!"
+Paltu said, "Shall I massage your breasts, Sis?"
+Sis got angry and grabbed Paltu's pussy and started pulling it hard and said,(brother sister fuck, brother sister tattoos, brother sister, brother sister design studio, brother sister p***, real brother sister incest, brother sister incest porn, real brother sister porn, brother sister creampie, hentai brother sister, brother sister tattoo ideas, real brother sister sex, brother sister fucking, brother sister anal) </p>
+        </div>
+        <img src="images/img38.jpg" alt="sister sex video" />
+      </div>
+    </a>
+    <a href="page31.html" class="post-link" title="My married sister Nancy">
+      <div class="post">
+        <div class="post-content">
+          <h2> brother fucks sister </h2>
+          <p>I understood that the water in the pussy had drained. I left my lips and went down. I used two fingers to suck her pussy. I fucked her and put my tongue in her pussy and started biting and biting her pussy. I thought the whole house could hear her moans. Sometimes I was licking her pussy with two fingers and at the same time I was licking her pussy. She held my head between her two nipples (bro sis sex, xxx bro sis, real bro sis incest, real bro sis porn, bro sis xxx, bro sis incest porn, bro sis incest, hentai bro sis, bro sis nude, real bro sis sex, bro sis watch porn, bro sis incest stories, brother sister porn, brother sister sex, brother sister incest, brother sister hentai, brother sister fuck, brother sister tattoos)</p>
+        </div>
+        <img src="images/img5.jpg" alt="sexy girl nude" />
+      </div>
+    </a>
+    <a href="page18.html" class="post-link" title=" mom son incest porn story">
+      <div class="post">
+        <div class="post-content">
+          <h2> My son make me pregnant</h2>
+          <p>Boy: Sorry, mother.
+Me: You stupid son, are you thinking of fucking me?
+Boy: I won't do it again, mother.(mom son porn, mom son sex, mom son incest porn, real mom son porn, mom son xxx, mom son incest, mom son fuck, real mom son incest, japanese mom son porn, mom son taboo porn, mom son sex stories, mom son sex videos, mom son creampie, real mom son sex, mom son anal, mom son porn comics, mom son sex video, mom son hentai, mom son fucking, mother son incest)</p>
+        </div>
+        <img src="images/img18.jpg" alt="milf mother sex" />
+      </div>
+    </a>
+    <a href="page43.html" class="post-link" title=" sister sex story">
+      <div class="post">
+        <div class="post-content">
+          <h2> Two sisters fucked together</h2>
+          <p>See, tell me if it hurts. Saying that, I started fucking my young cousin, Sheila.
+Ah: What can I say, fucking a young girl is different. What a beautiful tight pussy. And it's fun to press her small tits. We fucked under the mango tree for (lesbian sex comics, milf sex comics, hentai sex comics, milf sex comics, brother sister porn, brother sister sex, brother sister incest, brother sister hentai, brother sister fuck, brother sister tattoos, brother sister, brother sister design studio, brother sister p***, real brother sister incest, brother sister incest porn, real brother sister porn, brother sister creampie, hentai brother sister)</p>
+        </div>
+        <img src="images/img43.jpg" alt="sexy sister sex" />
+      </div>
+    </a>
+
+    <!-- Add as many more cards as needed -->
+
+  </div>
+</div>
   <div id="posts" class="posts-grid">Loading posts...</div>
   <div class="pagination" id="pagination"></div>
 
@@ -563,35 +815,38 @@ if (window.innerWidth <= 600) {
       setTheme(toggle.checked ? 'dark' : 'light');
     });
   </script>
+
 <script>
-  // Bypass age modal for search engine crawlers
-  const isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
-  if (isBot) {
-    document.getElementById("ageConsentModal").style.display = "none";
-  }
+  const track = document.getElementById('featuredTrack');
+  const original = track.innerHTML;
+  track.innerHTML += original; // duplicate for seamless infinite loop
 </script>
+
+
+
 <script>
-  const consentModal = document.getElementById("ageConsentModal");
-  const consent = localStorage.getItem("ageConfirmed");
-  const consentTime = localStorage.getItem("consentTime");
+fetch('posts.json')
+  .then(res => res.json())
+  .then(posts => {
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": posts.map((post, index) => ({
+        "@type": "Article",
+        "position": index + 1,
+        "name": post.title,
+        "description": post.description,
+        "image": location.origin + '/' + post.image,
+        "url": location.origin + '/' + post.filename
+      }))
+    };
 
-  const now = new Date().getTime();
-  const sevenDays = 7 * 24 * 60 * 60 * 1000;
-
-  if (consent === "yes" && consentTime && (now - parseInt(consentTime)) < sevenDays) {
-    consentModal.style.display = "none";
-  }
-
-  document.getElementById("consentYes").addEventListener("click", () => {
-    localStorage.setItem("ageConfirmed", "yes");
-    localStorage.setItem("consentTime", new Date().getTime());
-    consentModal.style.display = "none";
-  });
-
-  document.getElementById("consentNo").addEventListener("click", () => {
-    alert("You must be 18+ to access this site.");
-    window.location.href = "https://www.google.com";
-  });
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData, null, 2);
+    document.head.appendChild(script);
+  })
+  .catch(console.error);
 </script>
 </body>
 </html>
