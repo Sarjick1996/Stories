@@ -19,6 +19,7 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="light dark">
   <title>❤️ ফ্রি চোদাচুদির গল্প | মজা ও আকাঙ্ক্ষার জন্য পড়ুন 🔞</title>
 
 <!-- Standard favicon -->
@@ -31,7 +32,7 @@
   <link rel="icon" type="image/png" sizes="128x128" href="../favicon/fav128.png">
 
 
-<meta name="description" content="🔞সেরা ফ্রি সেক্স গল্পের সংগ্রহ পড়ুন 🍆🍑💦 — মা ছেলে চটি ❤️, ভাই বোন চটি গল্প👅, বড় দিদিকে চুদা🔞, দিদি চোদার গল্প🍆,পারিবারিক চটি গল্প🍑,দিদির পোদ মারা💦, দিদির সাথে সেক্স🍆"/>
+<<meta name="description" content="🔞সেরা ফ্রি সেক্স গল্পের সংগ্রহ পড়ুন 🍆🍑💦 — মা ছেলে চটি ❤️, ভাই বোন চটি গল্প👅, বড় দিদিকে চুদা🔞, দিদি চোদার গল্প🍆,পারিবারিক চটি গল্প🍑,দিদির পোদ মারা💦, দিদির সাথে সেক্স🍆"/>
 <link rel="alternate" hreflang="en" href="https://prosexstory.com/english/indexenglish" />
 <link rel="alternate" hreflang="hi" href="https://prosexstory.com/hindi/indexhindi" />
 <link rel="alternate" hreflang="bn" href="https://prosexstory.com/bengali/indexbengali" />
@@ -261,12 +262,7 @@ body.dark-mode .post-content::after {
   body.light-mode .post {
     border-color: rgba(0, 0, 0, 0.2); /* Blackish border */
   }
-.scrolling-banner {
-  margin-bottom: 12px !important; /* <-- Increased space below top banner */
-  padding-top: 2px !important;
-  padding-bottom: 2px !important;
-  line-height: 1 !important;
-}
+
 
 .scrolling-warning {
   margin-top: 0 !important;
@@ -362,70 +358,255 @@ body.dark-mode .post-content::after {
     transform: translateX(-100%);
   }
 }
-.scrolling-banner {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  background-color: rgba(255, 255, 255, 0.3); /* translucent white background */
-  padding: 8px 0;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  text-align: center;
-}
 
-.scrolling-banner span {
-  display: inline-block;
-  padding-left: 100%;
-  font-size: 14px;
-  font-weight: 500;
-  color: #333; /* default for light mode */
-  animation: scroll-banner 100s linear infinite;
-}
 
-body.dark-mode .scrolling-banner {
-  background-color: rgba(255, 255, 255, 0.1); /* slightly more transparent in dark mode */
-}
-
-body.dark-mode .scrolling-banner span {
-  color: #ffffff; /* true white text in dark mode */
-}
-
+/* === TAG BANNER SCROLL ANIMATION === */
 @keyframes scroll-banner {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
+
+/* === SHARED BASE STYLES === */
+.seo-tag-banner {
+  overflow: hidden;
+  padding: 10px 0;
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.seo-tag-track {
+  display: inline-flex;
+  gap: 1rem;
+  white-space: nowrap;
+  animation: scroll-banner 25s linear infinite;
+  padding-left: 100%;
+}
+
+.seo-tag-track a {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+  border: 1px solid;
+}
+
+/* === LIGHT MODE (Pink Theme) === */
+body.light-mode .seo-tag-banner {
+  background: #fff0f6;
+  border-top: 1px solid #ffb6c1;
+  border-bottom: 1px solid #ffb6c1;
+}
+
+body.light-mode .seo-tag-track a {
+  background: #ffe4ec;
+  color: #c2185b;
+  border-color: #ffc1d6;
+}
+
+body.light-mode .seo-tag-track a:hover {
+  background: #ffd2e1;
+  color: #b0003a;
+}
+
+/* === DARK MODE (Dark Theme) === */
+body.dark-mode .seo-tag-banner {
+  background: #111;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+body.dark-mode .seo-tag-track a {
+  background: #222;
+  color: #fff;
+  border-color: #444;
+}
+
+body.dark-mode .seo-tag-track a:hover {
+  background: #444;
+  color: #fff;
+}
+
+/* === MOBILE RESPONSIVENESS === */
+@media (max-width: 768px) {
+  .seo-tag-banner {
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0;
+  }
+}
+
+
+
+/* === Featured Story Horizontal Scroller === */
+.featured-stories-bar {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.featured-track {
+  display: flex;
+  width: max-content;
+  animation: scrollLoop 15s linear infinite;
+}
+
+.featured-track .post {
+  flex: 0 0 auto;
+  width: 280px;
+  height: 70px; /* Match image height */
+  margin-right: 18px;
+  display: flex;
+  flex-direction: row-reverse; /* Image on the right */
+  align-items: center;
+  padding: 0 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.featured-track .post img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+.featured-track .post-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.featured-track .post-content h2 {
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.featured-track .post-content p {
+  font-size: 11px;
+  margin: 2px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #d6a940;
+}
+
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.featured-stories-bar:hover .featured-track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 600px) {
+  .featured-track .post {
+    width: 230px;
+    height: 70px;
+    padding: 0 6px;
+  }
+
+  .featured-track .post-content h2 {
+    font-size: 12px;
+  }
+
+  .featured-track .post-content p {
+    font-size: 10px;
+  }
+}
+
+
+
+
+/* === FIX: Language Button Visibility === */
+body.light-mode .lang-btn {
+  background-color: #e0e0e0;
+  color: #111;
+  border: 1px solid #bbb;
+}
+
+body.light-mode .lang-btn:hover {
+  background-color: #d4d4d4;
+}
+
+body.dark-mode .lang-btn {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+body.dark-mode .lang-btn:hover {
+  background-color: #333;
+}
+
+
+/* === FIX: Pagination Buttons === */
+body.light-mode .pagination button {
+  background-color: #f9f9f9;
+  color: #111;
+  border: 1px solid #ccc;
+}
+
+body.light-mode .pagination button.active {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+body.dark-mode .pagination button {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  border: 1px solid #333;
+}
+
+body.dark-mode .pagination button.active {
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+}
+
+
   </style>
 </head>
 <body>
-<div id="ageConsentModal" style="position:fixed;top:0;left:0;width:100%;height:100%;
-background-color:rgba(0,0,0,0.85);display:flex;flex-direction:column;justify-content:center;
-align-items:center;z-index:10000;color:white;text-align:center;padding:20px;">
-  <h2>সতর্কতা!</h2>
-  <p style="max-width: 500px; font-size: 15px;">
-    এই সাইটে প্রাপ্তবয়স্কদের জন্য উপযুক্ত বিষয়বস্তু রয়েছে। আমি নিশ্চিত করছি যে আমি ১৮ বছর বা তার বেশি বয়সী এবং
-    <a href="#terms" style="color: #ff69b4; text-decoration: underline;">পরিসেবার শর্তাবলীতে</a> সম্মত, যা এই সাইটে উপলব্ধ।
-  </p>
-  <div style="margin-top:20px;">
-    <button id="consentYes" style="padding:12px 24px;margin-right:12px;
-      background: linear-gradient(45deg, #ff4da6, #ff66cc); border:none;
-      border-radius:6px; color:white; font-weight:bold; font-size:14px;
-      cursor:pointer; transition:0.3s;">সম্মত</button>
-    
-    <button id="consentNo" style="padding:12px 24px;
-      background: linear-gradient(45deg, #ff4da6, #ff66cc); border:none;
-      border-radius:6px; color:white; font-weight:bold; font-size:14px;
-      cursor:pointer; transition:0.3s;">অসম্মত</button>
+<!-- SEO Tag Banner -->
+<section aria-label="Popular Tags" class="tag-section">
+  <div class="seo-tag-banner">
+    <div class="seo-tag-track">
+      <a href="https://prosexstory.com/bengali/page1">পারিবারিক চটি গল্প</a>
+      <a href="https://prosexstory.com/bengali/page10">মা ছেলে চটি গল্প</a>
+      <a href="https://prosexstory.com/bengali/page11">bangla choti kahini</a>
+      <a href="https://prosexstory.com/bengali/page5">bangla choti golpo</a>
+      <a href="https://prosexstory.com/bengali/page6">ভাই বোন চটি</a>
+      <a href="https://prosexstory.com/bengali/page7">ভাই বোনের sex</a>
+      <a href="https://prosexstory.com/bengali/page16">নোংরা পারিবারিক চটি</a>
+      <a href="https://prosexstory.com/bengali/page21">ইনসেস্ট চটি গল্প</a>
+      <a href="https://prosexstory.com/bengali/page31">চোদাচুদির গল্প</a>
+      <a href="https://prosexstory.com/bengali/page41">bengali sex video</a>
+      <a href="https://prosexstory.com/bengali/page51">bangla sex video</a>
+      <a href="https://prosexstory.com/bengali/page21">maa chele sex choti</a>
+      <a href="https://prosexstory.com/bengali/page33">ভাই বোন চোদাচুদি</a>
+      <a href="https://prosexstory.com/bengali/page45">banglachoti</a>
+      <a href="https://prosexstory.com/bengali/page52">bengali sex stories</a>
+    </div>
   </div>
-</div>
-<div class="scrolling-banner">
-  <span>
-   সেরা ফ্রি সেক্স গল্পের সংগ্রহ পড়ুন — bangla choti golpo, maa chele choti, bangla choti kahini, bangla choti story, bangla choti stories, bangla choti in, চটি গল্প, বাংলা চটি গল্প, পারিবারিক চটি গল্প, মা ছেলে চটি গল্প, চটিগল্প, বাংলা চটিগল্প, নতুন চটি গল্প, মা ছেলে চটি গল্প, মা ছেলের চটি, মা ছেলে, মা ছেলে চোদাচুদি, মা ছেলে xxx, মা-ছেলে চুদাচুদি, মা-ছেলে চটি, মা-ছেলে চুদাচুদি, মা ছেলে চোদাচুদির গল্প, মা ছেলে সেক্স ভিডিও, মা ছেলের সেক্স, বাংলা চটি মা, মা ছেলে বাংলা চটি, ভাই বোন চটি, ভাই বোনের চোদাচুদি, ভাই বোন, ভাই বোন সেক্স, বাংলা চটি ভাই বোন, ভাই বোনের xxx, চটি গল্প ভাই বোন, ভাই বোন চটি গল্প, পারিবারিক চটি গল্প, বাংলা পারিবারিক চটি, বাংলা চটি পারিবারিক, পারিবারিক চোদাচুদি, পারিবারিক চোদাচুদির গল্প, বড় দিদিকে চুদা, দিদি চোদার গল্প, দিদির পোদ মারা, দিদির সাথে সেক্স, ইনসেস্ট চটি, ইনসেস্ট বাংলা চটি, ইনসেস্ট চটি গল্প, চটি গল্প ইনসেস্ট, বাবা মেয়ে চটি, বাবা মেয়ের সেক্স, বাবা মেয়ের সেক্স ভিডিও, বাবা মেয়ে চুদা চুদি ভিডিও, bangla choti vai bon, vai bon choti, vai bon sex, bon choda choti, vai bon choti golpo, bangla choti golpo vai bon, vai bon bangla choti kahini, maa chele choti, maa chele choti golpo, bangla maa chele choti, maa chele chodachudi golpo, maa chele bangla choti golpo, choti maa chele, baba meye bangla choti, baba meye choti golpo, baba meye panu golpo, paribarik choti, paribarik choti golpo, bangla paribarik choti, paribarik choda chudi, 
-  </span>
-</div>
+</section>
 
 <div class="logo-desktop">
   <img src="../logo/svgfinal.svg" alt="Logo" style="width: 500px; height: 150px; display: block; margin: 0 auto 3px;">
@@ -458,6 +639,71 @@ align-items:center;z-index:10000;color:white;text-align:center;padding:20px;">
     <button onclick="location.href='indexbengali.html'" class="lang-btn">বাংলা</button>
   </div>
 
+
+<div class="featured-stories-bar">
+  <div class="featured-track" id="featuredTrack">
+
+    <!-- Featured Story Card Example (copy as needed) -->
+    <a href="page1.html" class="post-link" title="মা ছেলে চটি গল্প">
+      <div class="post">
+        <div class="post-content">
+          <h2>মা ও ছেলের চোদন কাহিনী</h2>
+          <p>আমি আর মাধুরী মাগী মানে আমার মা একাই থাকি!! মা বাসায় সাধারণত নাইটি আর থ্রী-পিছ পড়ে! তো একদিন আমি সব প্ল্যান করে বাসায় আশার সময় একটি কোল্ড ড্রিংকস এর বোতলে প্রায় ৩ টা ঘু*মের ঔষধ মিক্স করে আনি সাথে আমার জন্য একটা আনি যাতে মা সন্দেহ না করে, তারপর মাকে ঔষধ মিশানো(desi sex videos, desi sex video, indian sex video, xvideos,xnxx, xhamster,বৌদি চটি গল্প, বৌদির চটি, বৌদি, বৌদি চোদাচুদি, বৌদি xxx, বৌদির চুদাচুদি, বৌদি বাংলা চটি, বৌদি সেক্স, বৌদি চুদাচুদি, বৌদির সেক্স ভিডিও, বৌদি চোদাচুদির গল্প, বাংলা চটি মামি, মামি চটি,boudi chodar golpo, bangla boudi chuda chudi golpo, desi boudi sex, choti boudi, bangla boudi chuda chudi, boudi xxx video, boudi sex video, maa baba boudi, boudi bangla choti golpo, bangla boudi chudachudi)</p>
+        </div>
+        <img src="images/img1.jpg" alt="milf fucking" />
+      </div>
+    </a>
+
+    <a href="page17.html" class="post-link" title=" মামার বিয়েতে মায়ের যৌবন ">
+      <div class="post">
+        <div class="post-content">
+          <h2>choti golpo incest</h2>
+          <p>Maa: বিট্টু বস. বিট্টু বিছানায় বসে পড়লো. আমার পাসে. আজ যেটা হল সেটা হবার ছিলোনা. তবু আজ যে হল সেটা ভুলে যে. বিট্টু: কি ভাবে ভুলবো??? আমার মা তো মাগি না তোমার মতো যাকে তাকে চুদতে দেয়. তবে কেন ও আমার মায়ের উপর চড়ার চেষ্টা করবে???(bangla maa chele choti, maa chele chodachudi golpo, maa chele bangla choti golpo, choti maa chele, maa chele chudachudi, maa chele chodachudi, maa chele choti bangla, maa chele choda chudi video, bangladeshi maa chele sex, maa chele sex choti, maa chele sex, bengali choti maa chele, maa chele choda choti, maa chele telegram link, maa chele bangla xxx, ma chele choti, bangla choti ma chele, ma chele choti golpo, ma chele bangla choti, bangla choti golpo ma chele, ma chele sex, ma chele chudachudir golpo, ma chele choty, real ma chele sex, bangla choti maa bon, maa didi ki chudai, maa didi sex story, bangla choti baba meye, baba meye choti,)</p>
+        </div>
+        <img src="images/img17.jpg" alt="mom son sex" />
+      </div>
+    </a>
+    <a href="page38.html" class="post-link" title="আমার অত্যাচারি দিদি">
+      <div class="post">
+        <div class="post-content">
+          <h2>ভাই বোন চটি গল্প</h2>
+          <p>রুমা রেগে গিয়ে পল্টুর প্যান্ট ধরে নামিয়ে দিলো আর ওর বাঁড়া ধরে টানতে টানতে নিয়ে গিয়ে বাথরুমে ঢোকাল । “ বেশি বার বাড়িস না পল্টু , তোকে যা করতে বলা হয়েছে করবি!” পল্টুর দিদি শাড়ি পড়ে আছে (ইনসেস্ট চটি, ইনসেস্ট বাংলা চটি, ইনসেস্ট চটি গল্প, চটি গল্প ইনসেস্ট, ইনসেস্ট পরিবার, ইনসেস্ট বাংলা চটি গল্প, বোনের গুদ মারা, কচি গুদ মারা, গুদ মারা চটি, মায়ের গুদ মারা, মামির গুদ মারা, গুদ মারার চটি, জোর করে গুদ মারা, ভাই বোন চটি, ভাই বোনের চোদাচুদি, ভাই বোন, ভাই বোন সেক্স, বাংলা চটি ভাই বোন, ভাই বোনের xxx, চটি গল্প ভাই বোন, ভাই বোন চটি গল্প, ভাই বোনের চটি, ভাই বোন চোদাচুদি, ভাই বোনের সেক্স ভিডিও, ভাই বোনের সেক্স, ভাই বোনের চোদাচুদির ভিডিও, ভাই বোনের ভালোবাসা, ভাই বোনের sex)</p>
+        </div>
+        <img src="images/img38.jpg" alt="sister sex video"/>
+      </div>
+    </a>
+    <a href="page31.html" class="post-link" title="আমার বিবাহিত বোন মিনু">
+      <div class="post">
+        <div class="post-content">
+          <h2>Bangla Incest sex story</h2>
+          <p>যখন আমার বোন চিরকুটটি পড়ল, ভাবলে তার স্বামী মানে আমার জামাই ঐ চিরকুট দিয়েছে। হয়ত জামাই কয়দিন চুদতে পারেনি বলে এই সুযোগে চুদতে চাচ্ছে (paribarik choti, paribarik choti golpo, bangla paribarik choti, paribarik choda chudi, paribarik chodon kahini, bangla choti paribarik golpo, coti golpo paribarik, new paribarik choti, bangla paribarik sex story, অজাচার চটি, অজাচার চটি গল্প, অজাচার গল্প, বাংলা চটি অজাচার, অজাচার বাংলা চটি গল্প, মা ছেলের অজাচার, বাংলা অজাচার চটি, অজাচার বাংলা চটি, পারিবারিক অজাচার, অজাচার মা চটি, চটি অজাচার, ইনসেস্ট চটি, ইনসেস্ট বাংলা চটি, ইনসেস্ট চটি গল্প, চটি গল্প ইনসেস্ট, ইনসেস্ট পরিবার, ইনসেস্ট বাংলা চটি গল্প)</p>
+        </div>
+         <img src="images/img5.jpg" alt="sexy girl nude sex" />
+      </div>
+    </a>
+    <a href="page18.html" class="post-link" title="আমার পেটে ছেলের সন্তান ">
+      <div class="post">
+        <div class="post-content">
+          <h2>মা ছেলের চটি গল্প</h2>
+          <p>একদিন রাতে টয়লেট করতে ঘরের বাইরে আসতেই শুনতে পেলাম অজয় বলছে “ও মা ও মা তোমার গুদ্ টা কি কালো উ: উ: তোমার কালো কুচকুচে গুদে আমার ধোন পুরো সেট হয়ে গেছে । উ উ আ আ আ আ।” এইটা শুনে তো আমার মাথা খারাপ হয়ে গেছে (incestchoti ,bangla choti golpo, চটি গল্প, choti golpo, bangla choti, মা ছেলে সেক্স ভিডিও, মা ছেলে চটি, মা ছেলে চটি গল্প, মা ছেলে চোদাচুদি, bangla choti maa chele, maa chele bangla choti, maa chele chuda chudi, bangladeshi maa chele chuda chudi, maa chele choti golpo, maa chele chudachudi, maa chele sex video, maa chele xvideo, maa chele chuda chudi bangla, মা ছেলে xxx, মা ছেলের চোদাচুদি, মা ছেলের চুদাচুদি, মা ছেলে, মা ছেলের xxx, মা ছেলের চটি গল্প, মা ছেলে সেক্স, চটি গল্প মা ছেলে, মা ছেলের এক্স, মা ছেলের সেক্স)</p>
+        </div>
+        <img src="images/img18.jpg" alt="sexy mom" />
+      </div>
+    </a>
+    <a href="page43.html" class="post-link" title="দুই বোন কে এক সাথে চুদা ">
+      <div class="post">
+        <div class="post-content">
+          <h2>bangla choti vai bon</h2>
+          <p>পস্রাবের পচন্ড চাপ তাই তারাতাড়ি বাথরুমে ডুকেই অবাক হয়ে গেলাম দেখি শিলা বাথ রুমে ন্যাংটো হয়ে গোসল করছে। দরজা বন্ধ করতে মনে হয় খেয়াল ছিল না। আমাকে দেখে তাড়া তাড়ি করে তোয়ালে দিয়ে শরীরটা ডেকে নিল। এই স্বল্প সময়েই আমি পুরো জরিপ করে নিলাম। বয়স চৌদ্দ হলে কি হবে মাল একটা হয়েছে! ক্লাস নাইনে(vai bon choti, vai bon choti golpo, bangla choti golpo vai bon, vai bon bangla choti kahini, vai bon new choti, vai bon bangla sex, bangla sex golpo vai bon, real vai bon sex video, vai bon chodachudi, coti golpo vai bon, bhai bon choti, bangla choti bhai bon, bhai bon chodar golpo, bangla bhai bon chuda chudi golpo, desi bhai bon sex, choti bhai bon, bangla bhai bon chuda chudi, bhai bon xxx video, bhai bon sex video, maa baba bhai bon, bhai bon bangla choti golpo, bangla bhai bon chudachudi, choto bon k chodar golpo, choto bon k chudlam, choti choto bon, choto bon bangla choti, choti golpo choto bon, choto bon ke choda, choto vai boro bon sex, bangla choti boro bon, boro bon choti golpo, bangla choti golpo boro bon, choti golpo boro bon, boro bon ke choda, boro bon sex, boro bon k chodar golpo, boro bon choti, choti boro bon, boro bon sex)</p>
+        </div>
+        <img src="images/img43.jpg" alt="sexy sister sex" />
+      </div>
+    </a>
+
+    <!-- Add as many more cards as needed -->
+
+  </div>
+</div>
 
   <div id="posts" class="posts-grid">Loading posts...</div>
   <div class="pagination" id="pagination"></div>
@@ -561,34 +807,35 @@ if (window.innerWidth <= 600) {
     });
   </script>
 <script>
-  // Bypass age modal for search engine crawlers
-  const isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
-  if (isBot) {
-    document.getElementById("ageConsentModal").style.display = "none";
-  }
+  const track = document.getElementById('featuredTrack');
+  const original = track.innerHTML;
+  track.innerHTML += original; // duplicate for seamless infinite loop
 </script>
+
+
 <script>
-  const consentModal = document.getElementById("ageConsentModal");
-  const consent = localStorage.getItem("ageConfirmed");
-  const consentTime = localStorage.getItem("consentTime");
+fetch('posts.json')
+  .then(res => res.json())
+  .then(posts => {
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": posts.map((post, index) => ({
+        "@type": "Article",
+        "position": index + 1,
+        "name": post.title,
+        "description": post.description,
+        "image": location.origin + '/' + post.image,
+        "url": location.origin + '/' + post.filename
+      }))
+    };
 
-  const now = new Date().getTime();
-  const sevenDays = 7 * 24 * 60 * 60 * 1000;
-
-  if (consent === "yes" && consentTime && (now - parseInt(consentTime)) < sevenDays) {
-    consentModal.style.display = "none";
-  }
-
-  document.getElementById("consentYes").addEventListener("click", () => {
-    localStorage.setItem("ageConfirmed", "yes");
-    localStorage.setItem("consentTime", new Date().getTime());
-    consentModal.style.display = "none";
-  });
-
-  document.getElementById("consentNo").addEventListener("click", () => {
-    alert("আপনাকে ১৮ বছর বা তার বেশি হতে হবে এই সাইট অ্যাক্সেস করতে।");
-    window.location.href = "https://www.google.com";
-  });
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData, null, 2);
+    document.head.appendChild(script);
+  })
+  .catch(console.error);
 </script>
 </body>
 </html>
